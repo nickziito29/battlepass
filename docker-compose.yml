@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: battlepass_db
+    restart: always
+    environment:
+      POSTGRES_USER: battlepass
+      POSTGRES_PASSWORD: battlepass
+      POSTGRES_DB: battlepass
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: battlepass_backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/battlepass
+      SPRING_DATASOURCE_USERNAME: battlepass
+      SPRING_DATASOURCE_PASSWORD: battlepass
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend/battlepass-frontend
+    container_name: battlepass_frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
