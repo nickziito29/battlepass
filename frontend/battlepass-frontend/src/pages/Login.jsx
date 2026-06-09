@@ -1,78 +1,90 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import "../styles/login.css";
 
 export default function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    function handleSubmit(e) {
-        e.preventDefault();
-        console.log("Login enviado:", { email, password });
-        alert("Login enviado (sem autenticação)");
-    }
+    const [activeTab, setActiveTab] = useState("login");
 
     return (
-        <div style={styles.container}>
-            <form style={styles.card} onSubmit={handleSubmit}>
-                <h2 style={styles.title}>BattlePass Login</h2>
+        <div className="login-page">
+            <img src="/src/assets/logo.png" alt="Logo" className="logo-img" />
 
-                <input
-                    type="email"
-                    placeholder="E-mail"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    style={styles.input}
-                />
+            <h1 className="welcome-title">Bem-vindo!</h1>
+            <p className="welcome-subtitle">
+                Entre na sua conta ou crie uma nova para começar
+            </p>
 
-                <input
-                    type="password"
-                    placeholder="Senha"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    style={styles.input}
-                />
+            <div className="login-card">
+                <h2 className="card-title">Acesse sua conta</h2>
+                <p className="card-subtitle">Escolha como deseja continuar</p>
 
-                <button style={styles.button} type="submit">
-                    Entrar
-                </button>
-            </form>
+                <div className="tabs">
+                    <button
+                        className={`tab ${activeTab === "login" ? "active" : ""}`}
+                        onClick={() => setActiveTab("login")}
+                    >
+                        Entrar
+                    </button>
+                    <button
+                        className={`tab ${activeTab === "register" ? "active" : ""}`}
+                        onClick={() => setActiveTab("register")}
+                    >
+                        Criar conta
+                    </button>
+                </div>
+
+                {activeTab === "login" ? (
+                    <form className="form">
+                        <label>Email</label>
+                        <input type="email" placeholder="seu@email.com" />
+
+                        <label>Senha</label>
+                        <input type="password" placeholder="********" />
+
+                        <button className="btn-primary">Entrar</button>
+
+                        <a href="#" className="forgot-password">
+                            Esqueceu a senha?
+                        </a>
+
+                        <div className="divider">
+                            <span>ou</span>
+                        </div>
+
+                        <button className="btn-google">Continuar com Google</button>
+                    </form>
+                ) : (
+                    <form className="form">
+                        <label>Nome completo</label>
+                        <input type="text" placeholder="Seu nome" />
+
+                        <label>Email</label>
+                        <input type="email" placeholder="seu@email.com" />
+
+                        <label>Senha</label>
+                        <input type="password" placeholder="********" />
+
+                        <label>Confirmar senha</label>
+                        <input type="password" placeholder="********" />
+
+                        <button className="btn-primary">Criar conta</button>
+
+                        <p className="terms">
+                            Ao criar uma conta, você concorda com nossos{" "}
+                            <a href="#" className="link">Termos de Uso</a>
+                        </p>
+
+                        <div className="divider">
+                            <span>ou</span>
+                        </div>
+
+                        <button className="btn-google">Continuar com Google</button>
+                    </form>
+                )}
+            </div>
+
+            <footer className="footer">
+                © 2026 BattlePass. Todos os direitos reservados.
+            </footer>
         </div>
     );
 }
-
-const styles = {
-    container: {
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        background: "#0f172a",
-    },
-    card: {
-        background: "#1e293b",
-        padding: "32px",
-        borderRadius: "12px",
-        width: "320px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "16px",
-    },
-    title: {
-        color: "#fff",
-        textAlign: "center",
-    },
-    input: {
-        padding: "12px",
-        borderRadius: "8px",
-        border: "none",
-        outline: "none",
-    },
-    button: {
-        padding: "12px",
-        background: "#3b82f6",
-        color: "#fff",
-        border: "none",
-        borderRadius: "8px",
-        cursor: "pointer",
-        fontWeight: "bold",
-    },
-};

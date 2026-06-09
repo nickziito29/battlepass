@@ -1,0 +1,229 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: linear-gradient(135deg, #FFE0EA, #FFF5F8); /* fundo atualizado */
+    font-family: "Inter", system-ui, sans-serif;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Fundo geral */
+.login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #FFE0EA, #FFF5F8); /* fundo atualizado */
+    font-family: "Inter", system-ui, sans-serif;
+}
+
+/* Logo */
+.logo-img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 16px;
+}
+
+/* Títulos principais */
+.welcome-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1F1F1F; /* texto principal */
+    margin-bottom: 4px;
+}
+
+.welcome-subtitle {
+    font-size: 14px;
+    color: #6B6B6B; /* texto secundário */
+    margin-bottom: 24px;
+}
+
+/* Card */
+.login-card {
+    background: #FFFFFF;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 380px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F1F1F;
+}
+
+.card-subtitle {
+    font-size: 13px;
+    color: #6B6B6B;
+    margin-bottom: 20px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    background: #F3F3F6;
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6B6B6B;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab.active {
+    background: #FFFFFF;
+    box-shadow: 0 0 0 1px #E5E5E9 inset;
+    color: #A0002A; /* cor ativa da marca */
+}
+
+.tab:hover {
+    background: #FFFFFF;
+}
+
+/* Formulário */
+.form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 8px;
+}
+
+.form label {
+    font-size: 13px;
+    color: #1F1F1F;
+}
+
+.form input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #E5E5E9;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+/* Botão principal */
+.btn-primary {
+    margin-top: 8px;
+    padding: 12px;
+    background: linear-gradient(90deg, #A0002A, #E0004D); /* degradê oficial */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #8B0025, #C80042); /* hover oficial */
+    transform: translateY(-1px);
+}
+
+/* Link de senha */
+.forgot-password {
+    display: block;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #6B6B6B;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Divisor */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px 0;
+    color: #AAA;
+    font-size: 13px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #EEE;
+    margin: 0 8px;
+}
+
+/* Botão Google */
+.btn-google {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    border: 1px solid #E5E5E9;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-google:hover {
+    background: #F9F9F9;
+}
+
+/* Rodapé */
+.footer {
+    margin-top: 24px;
+    font-size: 12px;
+    color: #AAA;
+}
+
+/* Logo dentro do quadrado */
+.logo-box {
+    width: 70px;
+    height: 70px;
+    background: #E0004D; /* cor da marca */
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.logo-inside {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+/* Termos de uso */
+.terms {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #6B6B6B;
+}
+
+.link {
+    color: #E0004D; /* link na cor da marca */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
