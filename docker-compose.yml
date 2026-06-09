@@ -14,6 +14,8 @@ services:
     volumes:
       - ./database:/docker-entrypoint-initdb.d
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - battlepass_network
 
   backend:
     build: ./backend
@@ -26,14 +28,24 @@ services:
       SPRING_DATASOURCE_PASSWORD: battlepass
     depends_on:
       - db
+    networks:
+      - battlepass_network
 
   frontend:
     build: ./frontend/battlepass-frontend
     container_name: battlepass_frontend
     ports:
       - "5173:80"
+    environment:
+      VITE_API_URL: http://backend:8080/api
     depends_on:
       - backend
+    networks:
+      - battlepass_network
 
 volumes:
   postgres_data:
+
+networks:
+  battlepass_network:
+    driver: bridge

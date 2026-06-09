@@ -3,7 +3,7 @@ package com.battlepass.model;
 public enum UserRole {
     BASE_USER,
     ATHLETE,
-    TEACHER,
+    PROFESSOR,
     ACADEMY_OWNER,
     ADMIN
 }
