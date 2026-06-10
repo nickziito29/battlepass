@@ -1,19 +1,34 @@
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Header from "./components/Header";
 
-export default function App() {
+function AppContent() {
+    const location = useLocation();
+
+    const hideHeader =
+        location.pathname === "/login" ||
+        location.pathname === "/register";
+
     return (
-        <div style={styles.app}>
-            <Login />
-        </div>
+        <>
+            {!hideHeader && <Header />}
+
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+            </Routes>
+        </>
     );
 }
 
-const styles = {
-    app: {
-        width: "100%",
-        height: "100%",
-        margin: 0,
-        padding: 0,
-        boxSizing: "border-box",
-    },
-};
+export default function App() {
+    return (
+        <BrowserRouter>
+            <AppContent />
+        </BrowserRouter>
+    );
+}

@@ -1,0 +1,273 @@
+/* ===========================
+   HEADER
+=========================== */
+.home-header {
+    height: 60px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E5E5E9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    gap: 24px;
+}
+
+/* Agrupamentos */
+.left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1; /* permite que a busca cresça sem empurrar a direita */
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    /* NÃO usar margin-left:auto aqui, senão empurra tudo */
+}
+
+/* Logo */
+.logo {
+    height: 38px;
+}
+
+/* ===========================
+   ÍCONES
+=========================== */
+.icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    cursor: pointer;
+    color: #6B6B6B;
+    transition: 0.2s ease;
+    padding: 0;
+}
+
+.icon-btn svg {
+    display: block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+}
+
+.icon-btn:hover {
+    color: #A0002A;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E0004D;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 10px;
+    margin-left: 4px;
+}
+
+/* ===========================
+   BUSCA EXPANSÍVEL
+=========================== */
+.search-expanded {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 320px; /* tamanho inicial */
+    transition: max-width 0.4s ease;
+}
+
+/* Cresce até quase encostar no menu */
+.search-expanded.active {
+    max-width: calc(100% - 50px);
+    /*
+       100% = largura da área .left
+       140px = espaço reservado para logo + gaps
+       Ajuste esse valor se quiser mais perto ou mais longe do menu
+    */
+}
+
+/* Botão de fechar */
+.close-btn {
+    font-size: 18px;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Campo de busca */
+.search-field {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #F3F3F6;
+    border-radius: 24px;
+    padding: 8px 14px;
+    border: 1px solid #CCC;
+    transition: all 0.3s ease;
+}
+
+.search-field svg {
+    flex-shrink: 0;
+    color: #6B6B6B;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+    color: #333;
+}
+
+/* ===========================
+   BUSCA NORMAL
+=========================== */
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #F3F3F6;
+    padding: 8px 12px;
+    border-radius: 12px;
+    gap: 8px;
+    width: 260px;
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+}
+
+/* ===========================
+   POPOVERS
+=========================== */
+.popover-wrapper {
+    position: relative;
+}
+
+.popover {
+    position: absolute;
+    display: flex;
+    top: 50px;
+    right: 0;
+    background: #FFFFFF;
+    border: 1px solid #E5E5E9;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    z-index: 10;
+    animation: fadeIn 0.2s ease;
+}
+
+/* ===========================
+   MENU GRID
+=========================== */
+.grid-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.grid-item {
+    background: #F3F3F6;
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.grid-item:hover {
+    background: #FFE0EA;
+    color: #A0002A;
+}
+
+/* ===========================
+   NOTIFICAÇÕES
+=========================== */
+.badge {
+    position: absolute;
+    top: 0px;
+    right: -4px;
+
+    background: #E0004D;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 10px;
+    margin-left: 4px;
+}
+
+.notif-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #EEE;
+}
+
+.unread {
+    font-weight: 600;
+    color: #A0002A;
+}
+
+.view-all {
+    margin-top: 12px;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background: #F3F3F6;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ===========================
+   USUÁRIO
+=========================== */
+.avatar {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(90deg, #A0002A, #E0004D);
+    color: white;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.user-info p {
+    font-size: 12px;
+    color: #6B6B6B;
+}
+
+.user-links button {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background: #F3F3F6;
+    border-radius: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.logout {
+    width: 100%;
+    padding: 10px;
+    margin-top: 12px;
+    border: none;
+    background: linear-gradient(90deg, #A0002A, #E0004D);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}

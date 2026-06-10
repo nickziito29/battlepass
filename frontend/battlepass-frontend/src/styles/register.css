@@ -1,0 +1,194 @@
+/* Fundo geral */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #FFE0EA, #FFF5F8);
+    font-family: "Inter", system-ui, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Página */
+.register-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Logo */
+.logo-img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 16px;
+}
+
+/* Títulos */
+.register-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1F1F1F;
+    margin-bottom: 4px;
+}
+
+.register-subtitle {
+    font-size: 14px;
+    color: #6B6B6B;
+    margin-bottom: 24px;
+}
+
+/* Card */
+.register-card {
+    background: #FFFFFF;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 380px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F1F1F;
+}
+
+.card-subtitle {
+    font-size: 13px;
+    color: #6B6B6B;
+    margin-bottom: 20px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    background: #F3F3F6;
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6B6B6B;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab.active {
+    background: #FFFFFF;
+    box-shadow: 0 0 0 1px #E5E5E9 inset;
+    color: #A0002A;
+}
+
+.tab:hover {
+    background: #FFFFFF;
+}
+
+/* Formulário */
+.form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 8px;
+}
+
+.form label {
+    font-size: 13px;
+    color: #1F1F1F;
+}
+
+.form input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #E5E5E9;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+/* Botão principal */
+.btn-primary {
+    margin-top: 8px;
+    padding: 12px;
+    background: linear-gradient(90deg, #A0002A, #E0004D);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #8B0025, #C80042);
+    transform: translateY(-1px);
+}
+
+/* Termos */
+.terms {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #6B6B6B;
+}
+
+.link {
+    color: #E0004D;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Divisor */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px 0;
+    color: #AAA;
+    font-size: 13px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #EEE;
+    margin: 0 8px;
+}
+
+/* Botão Google */
+.btn-google {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    border: 1px solid #E5E5E9;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-google:hover {
+    background: #F9F9F9;
+}
+
+/* Rodapé */
+.footer {
+    margin-top: 24px;
+    font-size: 12px;
+    color: #AAA;
+}

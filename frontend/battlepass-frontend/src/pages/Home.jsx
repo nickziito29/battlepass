@@ -1,10 +1,11 @@
-function Home() {
+import React, { useState, useRef, useEffect } from "react";
+import "../styles/home.css";
+
+export default function Home() {
     return (
-        <div style={{ padding: "2rem" }}>
-            <h1>BattlePass Frontend</h1>
-            <p>Bem-vindo ao sistema de academias e usuários.</p>
+        <div className="home">
+            {/* Aqui vai só o feed */}
+            <h1>Feed</h1>
         </div>
     );
 }
-
-export default Home;
