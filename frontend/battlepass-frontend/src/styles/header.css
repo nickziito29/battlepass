@@ -14,6 +14,52 @@
 }
 
 /* ==========================================================================
+   CLASSE GLOBAL DO AVATAR EM CÍRCULO (REUTILIZADA)
+   ========================================================================== */
+.home-avatar-circle {
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-input, #f0f2f5); /* Fundo cinza suave */
+    color: var(--text-primary, #1c1e21);       /* Cor da letra interna */
+    border-radius: 50% !important;             /* Garante o círculo perfeito */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;                     /* Remove sublinhados se for Link/a */
+    user-select: none;
+    transition: filter 0.2s ease;
+    flex-shrink: 0;                            /* Impede que achate */
+}
+
+.home-avatar-circle:hover {
+    filter: brightness(0.9);
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   GATILHO EXCLUSIVO DO USUÁRIO NO HEADER (APENAS O CÍRCULO)
+   ========================================================================== */
+.header-avatar-trigger {
+    background-color: #f0f2f5;
+    border: 2px solid transparent;
+    padding: 0;
+    width: 38px !important;
+    height: 38px !important;
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Feedback visual quando o popover do usuário estiver aberto ou em hover */
+.header-avatar-trigger:hover,
+.header-avatar-trigger.active {
+    filter: brightness(0.9);
+    border-color: #e4e6eb;
+}
+
+/* ==========================================================================
    1. MENU POPUP (ESTILO FACEBOOK)
    ========================================================================== */
 
@@ -142,25 +188,8 @@
 }
 
 /* ==========================================================================
-   2. POPOVER DO USUÁRIO (NIKO - IGUAL AO PRINT 498A9A)
+   2. POPOVER DO USUÁRIO REFORMULADO (ALINHAMENTO EM COLUNA PERFEITO)
    ========================================================================== */
-
-.avatar-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.avatar-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-}
 
 .user-popover {
     position: absolute;
@@ -178,62 +207,83 @@
     font-family: Segoe UI, Arial, sans-serif;
 }
 
-/* Caixa com a foto redonda e o nome do Usuário */
+/* Container do Card superior */
 .user-card-profile {
     background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    padding: 4px;
+    padding: 0; /* Zerado para deixar o link controlar o preenchimento interno */
     margin-bottom: 8px;
+    box-sizing: border-box;
+    width: 100%;
 }
 
-.user-profile-info {
+/* O Link do card inteiro - Alinhamento idêntico aos itens de baixo */
+.user-profile-info-link {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 10px 12px;
+    gap: 12px;          /* Espaço idêntico entre bola e texto */
+    padding: 10px 8px;  /* Início idêntico na esquerda (8px) */
     cursor: pointer;
-    border-radius: 6px;
-    transition: background 0.2s;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
 }
 
-.user-profile-info:hover {
+.user-profile-info-link:hover {
     background-color: #F2F2F2;
 }
 
-.user-profile-img {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
+/* Bolinha de iniciais interna do popover */
+.home-avatar-circle-popover {
+    width: 36px !important;
+    height: 36px !important;
+    background-color: #e4e6eb;
+    color: #050505;
+    border-radius: 50% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
 }
 
 .user-profile-name {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     color: #050505;
 }
 
-/* Itens de Configuração e Sair */
+/* Lista de Opções abaixo do Card */
 .user-menu-list {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    width: 100%;
 }
 
+/* Itens de Configuração e Sair */
 .user-menu-item {
     display: flex;
     align-items: center;
-    padding: 10px 8px;
+    gap: 12px;          /* Mesmo espaço entre bola e texto */
+    padding: 10px 8px;  /* Mesmo início na esquerda (8px) */
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .user-menu-item:hover {
     background-color: #F2F2F2;
 }
 
+/* Círculos cinzas dos ícones */
 .user-menu-list .icon-circle {
     width: 36px;
     height: 36px;
@@ -243,23 +293,18 @@
     align-items: center;
     justify-content: center;
     color: #050505;
-    margin-right: 12px;
+    flex-shrink: 0;
 }
 
+/* Texto das opções */
 .user-item-text {
     flex: 1;
     font-size: 15px;
     font-weight: 500;
     color: #050505;
 }
-
-.arrow-right {
-    font-size: 18px;
-    color: #65676B;
-}
-
 /* ==========================================================================
-   3. POPOVER DE NOTIFICAÇÕES (ESTILO BATTLE PASS - IGUAL AO PRINT 498AD8)
+   3. POPOVER DE NOTIFICAÇÕES (ESTILO BATTLE PASS)
    ========================================================================== */
 
 .notif-popover {
@@ -282,7 +327,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 16px 12px 16px;
+    padding: 0 16px 12px 2px;
 }
 
 .notif-header h2 {
@@ -290,6 +335,7 @@
     font-weight: 700;
     color: #050505;
     margin: 0;
+    margin-right: 50px;
 }
 
 .notif-mark-all-btn {
@@ -299,7 +345,7 @@
     font-weight: 600;
     color: #050505;
     cursor: pointer;
-    padding: 6px 8px;
+    padding: 4px 6px;
     border-radius: 4px;
     transition: background-color 0.2s;
 }
@@ -391,8 +437,6 @@
     flex-shrink: 0;
     margin-left: 4px;
 }
-
-
 
 .notif-footer-btn:hover {
     background-color: #f2f2f2;

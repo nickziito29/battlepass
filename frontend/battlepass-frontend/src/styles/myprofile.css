@@ -1,0 +1,475 @@
+/* ==========================================================================
+   ESTRUTURA GERAL DA PÁGINA DE PERFIL
+   ========================================================================== */
+.profile-page-wrapper {
+    background-color: var(--bg-feed, #f0f2f5);
+    min-height: 100vh;
+    font-family: Segoe UI, Arial, sans-serif;
+}
+
+.profile-main-container {
+    max-width: 940px;
+    margin: 20px auto 0 auto;
+    padding-bottom: 40px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* ==========================================================================
+   CAIXA ÚNICA DO PERFIL
+   ========================================================================== */
+.profile-card-box {
+    background-color: var(--bg-card, #ffffff);
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.profile-info-content {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+}
+
+.avatar-profile-wrapper {
+    position: relative;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+/* ATUALIZADO: Círculo cinza para as iniciais com borda branca grossa */
+.avatar-profile-circle {
+    width: 128px;
+    height: 128px;
+    background-color: #ccd0d5; /* NOVO: Cor de fundo cinza para iniciais */
+    border: 4px solid #ffffff; /* Borda branca grossa estilo FB */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    font-size: 38px; /* NOVO: Tamanho da fonte para as iniciais */
+    font-weight: 700;
+    color: #050505; /* NOVO: Cor do texto das iniciais */
+}
+
+/* MANTIDO SEU BOTÃO FLUTUANTE DE ALTERAR */
+.change-profile-photo-btn {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    background-color: #e4e6eb;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ADICIONADO: Menu Dropdown da foto do perfil */
+.photo-options-dropdown {
+    position: absolute;
+    top: 136px;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 6px;
+    width: 220px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.photo-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #050505;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+.photo-dropdown-item:hover {
+    background-color: #f2f3f5;
+}
+.dropdown-item-icon {
+    font-size: 16px;
+}
+
+.user-profile-details { flex: 1; }
+.name-and-action-row { display: flex; justify-content: space-between; align-items: flex-start; }
+.title-block h1 { font-size: 26px; font-weight: 700; margin: 0; color: var(--text-primary, #050505); }
+.profile-username-tag { font-size: 14px; color: var(--text-secondary, #65676B); font-weight: 500; display: block; margin-top: 2px; }
+
+.edit-profile-button {
+    background-color: #e4e6eb;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+.edit-profile-button:hover { background-color: #d8dadf; }
+
+.user-meta-info { display: flex; gap: 16px; margin-top: 12px; color: var(--text-secondary, #65676B); font-size: 14px; font-weight: 500; }
+.user-bio-text { margin-top: 14px; font-size: 15px; line-height: 1.5; color: var(--text-primary, #050505); max-width: 640px; }
+
+/* BARRA DE ESTATÍSTICAS MANTIDA */
+.profile-stats-bar { display: flex; border-top: 1px solid var(--border-color, #e4e6eb); padding-top: 24px; justify-content: space-around; }
+.stat-item { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.stat-value { font-size: 22px; font-weight: 700; color: var(--text-primary, #050505); }
+.stat-label { font-size: 12px; color: var(--text-secondary, #65676B); font-weight: 600; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ABAS DE NAVEGAÇÃO MANTIDAS */
+.profile-tabs-nav { display: flex; background-color: var(--bg-card, #ffffff); margin-top: 16px; border-radius: 8px; padding: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+.tab-btn { flex: 1; background: none; border: none; padding: 12px; font-size: 14px; font-weight: 600; color: var(--text-secondary, #65676B); cursor: pointer; border-radius: 6px; }
+.tab-btn:hover { background-color: #f2f2f2; }
+.tab-btn.active { background-color: #f2f2f2; color: #050505; }
+
+/* ==========================================================================
+   GRID LAYOUT FEED MANTIDO
+   ========================================================================== */
+.profile-tab-view-container { margin-top: 16px; }
+.facebook-layout-grid { display: flex; gap: 16px; align-items: flex-start; }
+
+/* COLUNA SIDEBAR */
+.facebook-sidebar-column { width: 360px; display: flex; flex-direction: column; gap: 16px; flex-shrink: 0; }
+.sidebar-box-card { background-color: #ffffff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); padding: 16px; }
+.box-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.box-card-header h3 { margin: 0; font-size: 17px; font-weight: 700; color: #050505; }
+.box-edit-icon-btn { background: none; border: none; font-size: 14px; cursor: pointer; }
+.info-data-item { display: flex; align-items: center; gap: 12px; color: #050505; font-size: 14px; }
+.add-highlights-btn { width: 100%; background-color: #e4e6eb; border: none; padding: 8px; font-size: 14px; font-weight: 600; border-radius: 6px; cursor: pointer; }
+
+/* COLUNA FEED & SHARE CARD MANTIDO */
+.facebook-feed-column { flex: 1; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+
+.facebook-share-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 12px 12px;
+}
+.share-row-top { display: flex; align-items: center; gap: 8px; margin-bottom: 0px; }
+
+/* ATUALIZADO: Avatar de iniciais para caixa de compartilhar */
+.share-avatar-circle.initials {
+    width: 40px;
+    height: 40px;
+    background-color: #ccd0d5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #050505;
+}
+
+.share-input-mock { flex: 1; background-color: #f0f2f5; padding: 10px 16px; border-radius: 20px; font-size: 15px; color: #65676B; cursor: pointer; }
+.share-input-mock:hover { background-color: #e4e6eb; }
+
+.share-row-bottom-buttons { display: flex; border-top: 1px solid #e4e6eb; padding-top: 8px; }
+.share-action-btn { flex: 1; background: none; border: none; padding: 8px; font-size: 14px; font-weight: 600; color: #65676B; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.share-action-btn:hover { background-color: #f2f3f5; }
+
+/* COMPONENTES DE FILTRO E POSTS CARD MANTIDOS */
+.facebook-posts-filter-card { background-color: #ffffff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); padding: 12px 16px 0 16px; }
+.filter-header-row { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid #e4e6eb; }
+.filter-header-row h3 { margin: 0; font-size: 17px; font-weight: 700; }
+.filter-actions-group { display: flex; gap: 8px; }
+.filter-btn-secondary { background-color: #e4e6eb; border: none; padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.filter-tabs-row { display: flex; }
+.filter-tab-item { flex: 1; background: none; border: none; padding: 10px; font-size: 13px; font-weight: 600; color: #65676B; cursor: pointer; }
+.filter-tab-item.active { color: #1877f2; box-shadow: inset 0 -3px 0 #1877f2; }
+
+.feed-post-card { background-color: #ffffff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); padding: 12px 16px; display: flex; flex-direction: column; }
+.post-card-header { display: flex; align-items: center; gap: 10px; position: relative; }
+
+/* ATUALIZADO: Avatar de iniciais para os posts */
+.post-author-avatar.initials {
+    width: 36px;
+    height: 36px;
+    background-color: #ccd0d5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #050505;
+}
+
+.post-header-text h4 { margin: 0; font-size: 14px; font-weight: 600; color: #050505; }
+.post-header-text span { font-size: 12px; color: #65676B; }
+.post-options-dot-btn { position: absolute; right: 0; top: 0; background: none; border: none; cursor: pointer; color: #65676B; }
+.post-card-body { margin: 12px 0; font-size: 14px; line-height: 1.4; color: #050505; }
+.post-card-counters { display: flex; justify-content: space-between; font-size: 12px; color: #65676B; padding-bottom: 8px; border-bottom: 1px solid #e4e6eb; }
+.counters-right span { margin-left: 10px; }
+.post-card-actions-bar { display: flex; padding-top: 4px; }
+.post-action-trigger-btn { flex: 1; background: none; border: none; padding: 8px; font-size: 13px; font-weight: 600; color: #65676B; border-radius: 4px; cursor: pointer; }
+.post-action-trigger-btn:hover { background-color: #f2f3f5; }
+
+/* ==========================================================================
+   ESTILOS ESPECÍFICOS: MODAL MINIMALISTA MANTIDO
+   ========================================================================== */
+.facebook-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(244, 244, 244, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.facebook-modal-box {
+    background-color: #ffffff;
+    width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.modal-header-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e4e6eb;
+    position: relative;
+}
+.modal-header-row h2 { margin: 0; font-size: 20px; font-weight: 700; color: #050505; }
+
+.close-modal-circle-btn {
+    position: absolute;
+    right: 0;
+    background-color: #e4e6eb;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    color: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close-modal-circle-btn:hover { background-color: #d8dadf; }
+
+.modal-user-identity-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+
+/* ATUALIZADO: Avatar de iniciais para a modal */
+.modal-user-avatar.initials {
+    width: 40px;
+    height: 40px;
+    background-color: #ccd0d5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: #050505;
+}
+
+.modal-user-meta-block h4 { margin: 0; font-size: 15px; font-weight: 600; color: #050505; }
+
+.modal-input-textarea-wrapper { margin-top: 20px; }
+.modal-input-textarea-wrapper textarea {
+    width: 100%;
+    height: 140px;
+    border: none;
+    resize: none;
+    font-size: 18px;
+    color: #050505;
+    outline: none;
+    font-family: inherit;
+}
+.modal-input-textarea-wrapper textarea::placeholder {
+    color: #8a8d91;
+}
+
+.modal-submit-post-btn {
+    margin-top: 24px;
+    background-color: #e4e6eb;
+    color: #bcc0c4;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    cursor: not-allowed;
+    transition: background 0.2s, color 0.2s;
+}
+.modal-submit-post-btn.active {
+    background-color: #e4e6eb;
+    color: #050505;
+    cursor: pointer;
+}
+
+.empty-state-card { background-color: #ffffff; border-radius: 8px; padding: 40px; text-align: center; color: #65676B; }
+
+/* (Mantenha todo o restante do seu arquivo css igual e adicione esse bloco no final) */
+
+/* ==========================================================================
+   ADICIONADO: ESTILOS DO WIDGET DE CALENDÁRIO INTERATIVO
+   ========================================================================== */
+.calendar-current-month {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1877f2;
+    background-color: #e7f3ff;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.mini-calendar-wrapper {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.calendar-weekdays-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #65676b;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e4e6eb;
+}
+
+.calendar-days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 4px;
+    column-gap: 4px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #050505;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.15s;
+}
+.calendar-day:hover:not(.empty) {
+    background-color: #f2f3f5;
+}
+
+/* Estado de hoje */
+.calendar-day.today {
+    background-color: #f0f2f5;
+    color: #1877f2;
+}
+
+/* Dia selecionado pelo clique */
+.calendar-day.selected {
+    background-color: #1877f2 !important;
+    color: #ffffff !important;
+}
+
+.calendar-day.empty {
+    cursor: default;
+    background: none;
+}
+
+/* Pontinho indicador de evento */
+.calendar-event-dot {
+    width: 5px;
+    height: 5px;
+    background-color: #bd10e0; /* Roxo para combinar com a identidade */
+    border-radius: 50%;
+    position: absolute;
+    bottom: 3px;
+}
+.calendar-day.selected .calendar-event-dot {
+    background-color: #ffffff; /* Fica branco quando selecionado */
+}
+
+/* Painel inferior para digitar lembretes */
+.calendar-day-events-panel {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #e4e6eb;
+}
+.calendar-day-events-panel h4 {
+    margin: 0 0 6px 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: #050505;
+}
+
+.calendar-input-row {
+    display: flex;
+    gap: 6px;
+}
+
+.calendar-event-input {
+    flex: 1;
+    background-color: #f0f2f5;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #050505;
+    outline: none;
+}
+.calendar-event-input::placeholder {
+    color: #65676b;
+}
+
+.calendar-save-event-btn {
+    background-color: #e4e6eb;
+    border: none;
+    padding: 0 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #050505;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.calendar-save-event-btn:hover {
+    background-color: #d8dadf;
+}
