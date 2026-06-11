@@ -1,26 +1,28 @@
-/* ===========================
-   MENU POPUP (ESTILO FACEBOOK)
-=========================== */
+/* ==========================================================================
+   ESTILOS GERAIS DO HEADER
+   ========================================================================== */
 
-/* Se quiser apenas empurrar a logo para a direita (dar distância da borda) */
 .logo {
-    height: 38px;      /* Garante a altura certinho */
+    height: 38px;
     cursor: pointer;
-    margin-left: -8px; /* Aumente ou diminua esse valor para mover para a direita */
-    transform: translateY(2px); /* Valores positivos descem a logo, negativos sobem */
+    margin-left: -8px;
+    transform: translateY(2px);
 }
 
 .popover-wrapper {
     position: relative;
 }
 
-/* Caixa invisível que segura o menu inteiro */
+/* ==========================================================================
+   1. MENU POPUP (ESTILO FACEBOOK)
+   ========================================================================== */
+
 .menu-popover {
     position: absolute;
     display: flex;
     flex-direction: column;
-    align-items: stretch; /* Garante que o card ocupe a largura total */
-    top: 50px;
+    align-items: stretch;
+    top: 52px;
     right: -111.5px;
     width: 360px;
     padding: 12px;
@@ -28,30 +30,27 @@
     overflow-y: auto;
     max-width: 95vw;
     z-index: 1000;
-    box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.15), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 }
 
-/* Título "Menu" principal (Solto no topo, fora do card) */
 .main-menu-title {
     font-size: 24px;
     font-weight: 700;
     color: #050505;
-    margin: 4px 0 12px 8px; /* Pequeno recuo à esquerda */
+    margin: 4px 0 12px 8px;
     font-family: Segoe UI, Arial, sans-serif;
 }
 
-/* O Bloco Branco (Card Interno) */
 .menu-card-content {
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.15), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
     padding: 16px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
 }
 
-/* Barra de busca dentro do card */
 .menu-search {
     display: flex;
     align-items: center;
@@ -75,7 +74,6 @@
     color: #65676B;
 }
 
-/* Rótulo das Seções (Ex: "Social") */
 .menu-section-label {
     font-size: 17px;
     font-weight: 700;
@@ -83,7 +81,6 @@
     margin: 4px 0 12px 4px;
 }
 
-/* Lista vertical dos itens */
 .grid-menu {
     display: flex;
     flex-direction: column;
@@ -91,11 +88,10 @@
     width: 100%;
 }
 
-/* Cada botão/linha - Ocupando largura total */
 .grid-item {
     display: flex;
-    flex-direction: row; /* Alinha ícone e bloco de texto lado a lado */
-    align-items: flex-start; /* Alinha no topo para dar folga caso o texto quebre linha */
+    flex-direction: row;
+    align-items: flex-start;
     justify-content: flex-start;
     width: 100%;
     padding: 8px 10px;
@@ -107,55 +103,48 @@
     text-align: left;
 }
 
-/* Efeito de hover idêntico ao do Facebook */
 .grid-item:hover {
     background: #F2F2F2;
 }
 
-/* Espaçamento do ícone/emoji dentro do item */
 .grid-item .icon {
     font-size: 24px;
     margin-right: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2px; /* Pequeno ajuste para alinhar perfeitamente com a primeira linha de texto */
+    margin-top: 2px;
 }
 
-/* Container que empilha o Título e a Descrição verticalmente */
 .grid-item .item-text {
     display: flex;
     flex-direction: column;
-    gap: 2px; /* Espaço sutil entre o título e a descrição */
+    gap: 2px;
 }
 
-/* Título principal do item */
 .grid-item .item-text .title {
     font-size: 15px;
     font-weight: 600;
     color: #050505;
 }
 
-/* Descrição/Subtítulo abaixo do título (Estilo Facebook) */
 .grid-item .item-text .desc {
     font-size: 13px;
-    color: #65676B; /* Cor cinza característica */
+    color: #65676B;
     line-height: 1.3;
     font-weight: 400;
 }
 
-/* Divisor sutil */
 .divider {
     border: 0;
     border-top: 1px solid #E5E5E9;
     margin: 16px 0;
 }
 
-/* =======================================
-   POPOVER DO USUÁRIO (ESTILO FACEBOOK)
-======================================= */
+/* ==========================================================================
+   2. POPOVER DO USUÁRIO (NIKO - IGUAL AO PRINT 498A9A)
+   ========================================================================== */
 
-/* Botão do Avatar no Header */
 .avatar-btn {
     background: none;
     border: none;
@@ -173,32 +162,15 @@
     object-fit: cover;
 }
 
-.avatar-arrow {
-    position: absolute;
-    bottom: -2px;
-    right: -2px;
-    background: #E4E6EB;
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
-    font-size: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #050505;
-    border: 2px solid #fff;
-}
-
-/* Container do Menu Dropdown */
 .user-popover {
     position: absolute;
     top: 52px;
     right: 0;
-    width: 360px;
+    width: 320px;
     background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-    padding: 16px 12px 12px 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 12px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -206,20 +178,20 @@
     font-family: Segoe UI, Arial, sans-serif;
 }
 
-/* Card Interno do Perfil */
+/* Caixa com a foto redonda e o nome do Usuário */
 .user-card-profile {
     background: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     padding: 4px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .user-profile-info {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 8px;
+    padding: 10px 12px;
     cursor: pointer;
     border-radius: 6px;
     transition: background 0.2s;
@@ -237,19 +209,12 @@
 }
 
 .user-profile-name {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 600;
     color: #050505;
 }
 
-.user-divider-thin {
-    border: 0;
-    border-top: 1px solid #E5E5E5;
-    margin: 4px 8px;
-}
-
-
-/* Itens da Lista de Opções */
+/* Itens de Configuração e Sair */
 .user-menu-list {
     display: flex;
     flex-direction: column;
@@ -259,7 +224,7 @@
 .user-menu-item {
     display: flex;
     align-items: center;
-    padding: 8px;
+    padding: 10px 8px;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.2s;
@@ -269,7 +234,6 @@
     background-color: #F2F2F2;
 }
 
-/* Círculo Cinza do Ícone */
 .user-menu-list .icon-circle {
     width: 36px;
     height: 36px;
@@ -282,7 +246,6 @@
     margin-right: 12px;
 }
 
-/* Textos dentro do item */
 .user-item-text {
     flex: 1;
     font-size: 15px;
@@ -290,280 +253,147 @@
     color: #050505;
 }
 
-.user-item-text-stack {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.user-item-text-stack .item-title {
-    font-size: 15px;
-    font-weight: 500;
-    color: #050505;
-}
-
-.user-item-text-stack .item-sub {
-    font-size: 12px;
-    color: #65676B;
-}
-
-/* Seta Lateral Direita (Chevron) */
 .arrow-right {
     font-size: 18px;
     color: #65676B;
-    padding-right: 4px;
 }
 
-/* Rodapé */
-.user-popover-footer {
-    font-size: 12px;
-    color: #65676B;
-    margin-top: 12px;
-    padding: 4px 8px 0 8px;
-    line-height: 1.4;
-}
-
-/* =======================================
-   POPOVER DE NOTIFICAÇÕES (ESTILO FB)
-======================================= */
+/* ==========================================================================
+   3. POPOVER DE NOTIFICAÇÕES (ESTILO BATTLE PASS - IGUAL AO PRINT 498AD8)
+   ========================================================================== */
 
 .notif-popover {
     position: absolute;
     top: 52px;
-    right: -60px; /* Ajuste dependendo do alinhamento do seu cabeçalho */
+    right: 0;
     width: 360px;
     background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 12px 0 0 0;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     z-index: 1000;
-    max-height: 85vh;
-    overflow-y: auto;
     font-family: Segoe UI, Arial, sans-serif;
 }
 
-/* Cabeçalho do Popover */
 .notif-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    padding: 0 16px 12px 16px;
 }
 
 .notif-header h2 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     color: #050505;
     margin: 0;
 }
 
-.notif-options-btn {
+.notif-mark-all-btn {
     background: none;
     border: none;
-    font-size: 16px;
-    color: #65676B;
-    cursor: pointer;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-}
-
-.notif-options-btn:hover {
-    background-color: #F2F2F2;
-}
-
-/* Filtros (Chips) */
-.notif-filters {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 12px;
-}
-
-.filter-chip {
-    border: none;
-    background: none;
-    padding: 8px 12px;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
     color: #050505;
-    border-radius: 18px;
     cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
 }
 
-.filter-chip.active {
-    background-color: #E7F3FF;
-    color: #1877F2;
+.notif-mark-all-btn:hover {
+    background-color: #f2f2f2;
 }
 
-.filter-chip:not(.active):hover {
-    background-color: #F2F2F2;
-}
-
-/* Lista e Títulos de Seção */
 .notif-list {
     display: flex;
     flex-direction: column;
+    max-height: 400px;
+    overflow-y: auto;
+    border-top: 1px solid #e5e5e9;
 }
 
-.notif-section-title {
-    font-size: 17px;
-    font-weight: 600;
-    color: #050505;
-    padding: 4px 8px;
+/* Customização fina do scroll lateral */
+.notif-list::-webkit-scrollbar {
+    width: 6px;
 }
 
-.notif-section-title-between {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 17px;
-    font-weight: 600;
-    color: #050505;
-    padding: 12px 8px 4px 8px;
+.notif-list::-webkit-scrollbar-track {
+    background: #ffffff;
 }
 
-.notif-section-title-between a {
-    font-size: 14px;
-    color: #1877F2;
-    text-decoration: none;
-    font-weight: 400;
+.notif-list::-webkit-scrollbar-thumb {
+    background: #bcc0c4;
+    border-radius: 3px;
 }
 
-/* Estrutura do Item de Notificação */
 .notif-item {
     display: flex;
-    align-items: flex-start;
-    padding: 8px;
-    border-radius: 8px;
-    cursor: pointer;
-    position: relative;
+    align-items: center;
+    padding: 12px 16px;
     gap: 12px;
-    transition: background 0.2s;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f2f5;
+    transition: background-color 0.2s;
 }
 
 .notif-item:hover {
-    background-color: #F2F2F2;
+    background-color: #f2f2f2;
 }
 
-/* Avatares com pequenos Badges em cima */
-.avatar-badge-wrapper {
-    position: relative;
-    flex-shrink: 0;
-}
-
-.notif-avatar {
-    width: 56px;
-    height: 56px;
+/* Círculos de Iniciais - Identidade Battle Pass */
+.notif-avatar-circle {
+    width: 44px;
+    height: 44px;
+    background-color: #050b14; /* Tom escuro Battle Pass */
+    color: #ffffff;
     border-radius: 50%;
-    object-fit: cover;
-}
-
-.notif-icon-badge {
-    position: absolute;
-    bottom: -2px;
-    right: -2px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    border: 2px solid #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
 }
 
-/* Cores dos Fundos das Badges */
-.badge-gray { background-color: #65676B; }
-.badge-blue { background-color: #1877F2; }
-.badge-blue-light { background-color: #E4E6EB; }
-.badge-purple { background-color: #9360F7; }
-
-/* Textos da Notificação */
 .notif-content {
     flex: 1;
-    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.notif-text {
+    margin: 0;
+    font-size: 13.5px;
     color: #050505;
-    line-height: 1.3;
+    line-height: 1.35;
 }
 
-.notif-content p {
-    margin: 0 0 4px 0;
-}
-
-.notif-time {
-    font-size: 13px;
-    color: #65676B;
-}
-
-.notif-time.blue-text {
-    color: #1877F2;
+.notif-text strong {
     font-weight: 600;
 }
 
-/* Ponto Azul de Não Lido */
-.unread-dot {
-    width: 12px;
-    height: 12px;
-    background-color: #1877F2;
+.notif-time {
+    font-size: 12px;
+    color: #65676b;
+}
+
+/* Ponto Preto Indicador de nova notificação */
+.notif-unread-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #000000;
     border-radius: 50%;
-    align-self: center;
     flex-shrink: 0;
     margin-left: 4px;
 }
 
-/* Botões de Ação de Convites */
-.notif-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
-}
 
-.notif-actions button {
-    flex: 1;
-    border: none;
-    padding: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 6px;
-    cursor: pointer;
-}
 
-.notif-actions .btn-primary {
-    background-color: #1877F2;
-    color: #ffffff;
-}
-
-.notif-actions .btn-primary:hover { background-color: #1565C0; }
-
-.notif-actions .btn-secondary {
-    background-color: #E4E6EB;
-    color: #050505;
-}
-
-.notif-actions .btn-secondary:hover { background-color: #D8DADF; }
-
-/* Botão do Rodapé */
-.load-more-notifs {
-    width: 100%;
-    border: none;
-    background-color: #E4E6EB;
-    color: #050505;
-    font-size: 15px;
-    font-weight: 600;
-    padding: 10px;
-    border-radius: 6px;
-    margin-top: 12px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.load-more-notifs:hover {
-    background-color: #D8DADF;
+.notif-footer-btn:hover {
+    background-color: #f2f2f2;
 }

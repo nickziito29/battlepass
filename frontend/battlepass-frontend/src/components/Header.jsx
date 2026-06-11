@@ -38,21 +38,20 @@ export default function Header() {
 
     const toggleMenu = (e) => {
         e.stopPropagation(); // Impede que o clique no botão se propague para o document
-        setMenuOpen(!userOpen);
+        setMenuOpen(!menuOpen);
         setUserOpen(false);
         setNotifOpen(false);
     };
 
     const toggleNotify = (e) => {
         e.stopPropagation(); // Impede que o clique no botão se propague para o document
-        setNotifOpen(!userOpen);
+        setNotifOpen(!notifOpen);
         setMenuOpen(false);
         setUserOpen(false);
     };
 
     return (
-        <header className="home-header">
-            <div className="left">
+        <header className="home-header" style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "56px", backgroundColor: "#ffffff", boxShadow: "0 2px 4px rgba(0,0,0,0.08)", zIndex: 9999 }}>            <div className="left" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <Link to="/home">
                     <img src="/src/assets/logo.png" alt="Logo" className="logo" />
                 </Link>
@@ -203,91 +202,66 @@ export default function Header() {
                             {/* Topo do Menu */}
                             <div className="notif-header">
                                 <h2>Notificações</h2>
-                                <button className="notif-options-btn">•••</button>
+                                <button className="notif-mark-all-btn">Todas como lidas</button>
                             </div>
 
-                            {/* Filtros: Tudo / Não lidas */}
-                            <div className="notif-filters">
-                                <button className="filter-chip active">Tudo</button>
-                                <button className="filter-chip">Não lidas</button>
-                            </div>
-
-                            {/* Lista de Notificações */}
+                            {/* Lista de Notificações (Limitada estritamente a 5 itens) */}
                             <div className="notif-list">
-                                <span className="notif-section-title">Hoje</span>
+                                {[
+                                    {
+                                        id: 1,
+                                        iniciais: "CS",
+                                        texto: <><strong>Carlos Silva</strong> curtiu seu post sobre treino de jiu-jitsu.</>,
+                                        tempo: "2min atrás",
+                                        unread: true
+                                    },
+                                    {
+                                        id: 2,
+                                        iniciais: "AM",
+                                        texto: <>Nova aula cadastrada na sua academia: <strong>Muay Thai Avançado</strong>.</>,
+                                        tempo: "15min atrás",
+                                        unread: true
+                                    },
+                                    {
+                                        id: 3,
+                                        iniciais: "PR",
+                                        texto: <><strong>Pedro Rocha</strong> te enviou uma solicitação de amizade.</>,
+                                        tempo: "1h atrás",
+                                        unread: true
+                                    },
+                                    {
+                                        id: 4,
+                                        iniciais: "LM",
+                                        texto: <>Luta marcada: você foi desafiado por <strong>Lucas Mendes</strong>.</>,
+                                        tempo: "Há 3 horas",
+                                        unread: false
+                                    },
+                                    {
+                                        id: 5,
+                                        iniciais: "FZ",
+                                        texto: <>A academia <strong>Fight Zone</strong> publicou um novo aviso no feed.</>,
+                                        tempo: "Há 5 horas",
+                                        unread: false
+                                    }
+                                ].slice(0, 5).map((notif) => (
+                                    <div key={notif.id} className="notif-item">
 
-                                {/* Item 1: Sugestão de Amizade */}
-                                <div className="notif-item unread">
-                                    <div className="avatar-badge-wrapper">
-                                        <img src="/src/assets/avatar1.png" alt="" className="notif-avatar" />
-                                        <div className="notif-icon-badge badge-gray">🔔</div>
-                                    </div>
-                                    <div className="notif-content">
-                                        <p>Você tem uma nova sugestão de amizade: <strong>Esley Estefanny</strong>.</p>
-                                        <span className="notif-time">13 h</span>
-                                    </div>
-                                </div>
-
-                                <span className="notif-section-title-between">Anteriores <a href="#vertudo">Ver tudo</a></span>
-
-                                {/* Item 2: Login aprovado */}
-                                <div className="notif-item">
-                                    <div className="avatar-badge-wrapper">
-                                        <img src="/src/assets/avatar-user.png" alt="" className="notif-avatar" />
-                                        <div className="notif-icon-badge badge-blue">🛡️</div>
-                                    </div>
-                                    <div className="notif-content">
-                                        <p>Você aprovou um login.</p>
-                                        <span className="notif-time blue-text">1 d</span>
-                                    </div>
-                                    <div className="unread-dot"></div>
-                                </div>
-
-                                {/* Item 3: Convite de Grupo com botões de Ação */}
-                                <div className="notif-item action-required">
-                                    <div className="avatar-badge-wrapper">
-                                        <img src="/src/assets/avatar2.png" alt="" className="notif-avatar" />
-                                        <div className="notif-icon-badge badge-blue">👥</div>
-                                    </div>
-                                    <div className="notif-content">
-                                        <p><strong>Luzia Andrade</strong> convidou você para participar do grupo público <strong>DIVULGA BARRA DOS...</strong></p>
-                                        <span className="notif-time blue-text">4 d</span>
-                                        <div className="notif-actions">
-                                            <button className="btn-primary">Entrar</button>
-                                            <button className="btn-secondary">Excluir</button>
+                                        {/* Círculo escuro com iniciais brancas */}
+                                        <div className="notif-avatar-circle">
+                                            {notif.iniciais}
                                         </div>
-                                    </div>
-                                    <div className="unread-dot"></div>
-                                </div>
 
-                                {/* Item 4: Aceitou pedido de amizade */}
-                                <div className="notif-item">
-                                    <div className="avatar-badge-wrapper">
-                                        <img src="/src/assets/avatar2.png" alt="" className="notif-avatar" />
-                                        <div className="notif-icon-badge badge-blue-light">👤</div>
-                                    </div>
-                                    <div className="notif-content">
-                                        <p><strong>Luzia Andrade</strong> aceitou seu pedido de amizade.</p>
-                                        <span className="notif-time">1 sem</span>
-                                    </div>
-                                </div>
+                                        {/* Conteúdo de texto e tempo */}
+                                        <div className="notif-content">
+                                            <p className="notif-text">{notif.texto}</p>
+                                            <span className="notif-time">{notif.tempo}</span>
+                                        </div>
 
-                                {/* Item 5: Item Salvo */}
-                                <div className="notif-item">
-                                    <div className="avatar-badge-wrapper">
-                                        <img src="/src/assets/item-thumb.png" alt="" className="notif-avatar" />
-                                        <div className="notif-icon-badge badge-purple">🔖</div>
+                                        {/* Ponto indicador de não lido */}
+                                        {notif.unread && <div className="notif-unread-dot"></div>}
                                     </div>
-                                    <div className="notif-content">
-                                        <p>Você salvou um item de <strong>Mago Revoada</strong>.</p>
-                                        <span className="notif-time blue-text">1 sem</span>
-                                    </div>
-                                    <div className="unread-dot"></div>
-                                </div>
+                                ))}
                             </div>
-
-                            {/* Botão de histórico inferior */}
-                            <button className="load-more-notifs">Ver notificações anteriores</button>
                         </div>
                     )}
                 </div>
